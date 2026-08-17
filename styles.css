@@ -1,0 +1,76 @@
+/* Custom CSS Utilities and Animations for Ulrich OUEDRAOGO Portfolio */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #0A0A14;
+    color: #F0EFF4;
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A14;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D2D44;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7B61FF;
+}
+
+/* Noise Filter Overlay Styling */
+#noiseFilter {
+  pointer-events: none;
+}
+
+/* Magnetic & Interactive Buttons */
+.magnetic-btn {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, background-color 0.3s ease;
+  will-change: transform;
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.03) translateY(-1px);
+}
+
+/* Timeline vertical line animation */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Skill gauges animation transition */
+.circle-progress {
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Custom Card Hover Effects */
+.bg-void-card {
+  background: rgba(18, 18, 37, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Custom Tilt keyframe for avatar glow */
+@keyframes tilt {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.animate-tilt {
+  animation: tilt 8s infinite linear;
+}

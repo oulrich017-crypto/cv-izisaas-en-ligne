@@ -1,0 +1,9 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Environment & Temp
+.env
+.env.local
+*.log
+.DS_Store

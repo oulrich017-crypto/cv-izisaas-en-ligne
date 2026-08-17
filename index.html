@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ulrich OUEDRAOGO — Étudiant en Génie Électrique & Tech Entrepreneur</title>
+  <meta name="description" content="Portfolio et CV en ligne haut de gamme d'Ulrich OUEDRAOGO — Étudiant en Génie Électrique à l'ISGE-BF, Fondateur de Gosanté et Cofondateur de Markan School.">
+  
+  <!-- Google Fonts: Sora (Sans), Instrument Serif (Serif), Fira Code (Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#0A0A14',
+            'void-card': '#121225',
+            'void-border': 'rgba(123, 97, 255, 0.15)',
+            violet: {
+              accent: '#7B61FF',
+              glow: '#A07CFE',
+              dark: '#5832E6'
+            },
+            phantom: '#F0EFF4',
+            graphite: '#18181B'
+          },
+          fontFamily: {
+            sans: ['Sora', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-void text-phantom font-sans antialiased selection:bg-violet-accent selection:text-white overflow-x-hidden relative">
+
+  <!-- SVG Global Noise Filter Overlay -->
+  <svg class="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.04]">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+  </svg>
+
+  <!-- Background Ambient Glow Orbs -->
+  <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-accent/20 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse"></div>
+  <div class="fixed bottom-10 right-10 w-[450px] h-[450px] bg-blue-600/15 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+  <div class="fixed top-2/3 left-10 w-[350px] h-[350px] bg-purple-900/20 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+
+  <!-- A. NAVBAR — Signature Flottante -->
+  <header class="fixed top-5 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-4xl">
+    <nav id="navbar" class="flex items-center justify-between px-6 py-3.5 rounded-full transition-all duration-500 border border-white/10 bg-void/60 backdrop-blur-xl shadow-2xl">
+      <!-- Logo / Initiales -->
+      <a href="#hero" class="group flex items-center gap-2 text-lg font-bold tracking-tight">
+        <span class="w-9 h-9 rounded-full bg-gradient-to-br from-violet-accent to-purple-800 flex items-center justify-center text-white text-xs font-mono font-bold shadow-lg shadow-violet-accent/30 group-hover:scale-105 transition-transform duration-300">UO</span>
+        <span class="tracking-wider text-sm font-semibold hidden sm:inline-block">ULRICH<span class="text-violet-glow font-light">.O</span></span>
+      </a>
+
+      <!-- Links -->
+      <div class="hidden md:flex items-center gap-7 text-xs font-medium tracking-wide uppercase text-slate-300">
+        <a href="#about" class="hover:text-violet-glow transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-violet-glow hover:after:w-full after:transition-all after:duration-300">À Propos</a>
+        <a href="#experience" class="hover:text-violet-glow transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-violet-glow hover:after:w-full after:transition-all after:duration-300">Parcours</a>
+        <a href="#skills" class="hover:text-violet-glow transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-violet-glow hover:after:w-full after:transition-all after:duration-300">Compétences</a>
+        <a href="#education" class="hover:text-violet-glow transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-violet-glow hover:after:w-full after:transition-all after:duration-300">Formation</a>
+        <a href="#contact" class="hover:text-violet-glow transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-violet-glow hover:after:w-full after:transition-all after:duration-300">Contact</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-3">
+        <button id="download-cv-nav" class="magnetic-btn px-4 py-2 rounded-full bg-violet-accent hover:bg-violet-glow text-white text-xs font-medium tracking-wide flex items-center gap-1.5 transition-all duration-300 shadow-md shadow-violet-accent/25 hover:shadow-violet-glow/40 active:scale-95">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span>Télécharger CV</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="relative">
+
+    <!-- B. HERO SECTION -->
+    <section id="hero" class="min-h-screen min-h-[100dvh] flex flex-col justify-center items-center text-center px-4 pt-28 pb-16 relative overflow-hidden">
+      
+      <!-- Profile Badge Avatar -->
+      <div class="hero-anim mb-6 relative group">
+        <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-violet-accent via-purple-500 to-cyan-400 opacity-75 blur-md group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-violet-glow/40 bg-void-card flex flex-col items-center justify-center relative z-10 shadow-2xl p-1 backdrop-blur-md overflow-hidden">
+          <div class="w-full h-full rounded-full bg-gradient-to-tr from-[#121226] via-[#1E1B4B] to-[#2E1065] flex flex-col items-center justify-center border border-white/10 relative">
+            <span class="text-3xl md:text-4xl font-extrabold font-sans text-transparent bg-clip-text bg-gradient-to-br from-white via-violet-200 to-violet-glow tracking-widest">UO</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-violet-glow/90 mt-1">ISGE-BF</span>
+            <div class="absolute bottom-2 w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+            <div class="absolute bottom-2 w-2 h-2 rounded-full bg-emerald-400"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Name -->
+      <h1 class="hero-anim text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-3 text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-violet-200 uppercase">
+        Ulrich OUEDRAOGO
+      </h1>
+
+      <!-- Professional Subtitle in Instrument Serif Italic -->
+      <p class="hero-anim text-2xl sm:text-3xl md:text-4xl font-serif italic text-violet-glow max-w-3xl mb-8 leading-snug">
+        Étudiant en Génie Électrique & Tech Entrepreneur
+      </p>
+
+      <!-- Monospace Stats Indicator -->
+      <div class="hero-anim flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-xs sm:text-sm font-mono text-slate-300 mb-10 bg-white/[0.03] border border-white/10 px-6 py-3 rounded-full backdrop-blur-md">
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-violet-glow"></span> [3+] Projets & Initiatives</span>
+        <span class="hidden sm:inline text-slate-600">|</span>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-violet-glow"></span> [2026] Fondateur Gosanté</span>
+        <span class="hidden sm:inline text-slate-600">|</span>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> [ISGE-BF] Génie Électrique</span>
+      </div>
+
+      <!-- Action CTA Buttons -->
+      <div class="hero-anim flex flex-wrap justify-center items-center gap-4">
+        <button id="download-cv-hero" class="magnetic-btn px-8 py-4 rounded-full bg-gradient-to-r from-violet-accent to-violet-dark text-white font-medium tracking-wide flex items-center gap-3 text-sm sm:text-base shadow-xl shadow-violet-accent/30 hover:shadow-violet-glow/50 transition-all duration-300 active:scale-95">
+          <i data-lucide="file-text" class="w-5 h-5"></i>
+          <span>Télécharger mon CV</span>
+        </button>
+        
+        <a href="#contact" class="magnetic-btn px-8 py-4 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 text-white font-medium tracking-wide flex items-center gap-3 text-sm sm:text-base transition-all duration-300 hover:border-violet-glow/50 backdrop-blur-md">
+          <i data-lucide="send" class="w-5 h-5 text-violet-glow"></i>
+          <span>Me contacter</span>
+        </a>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 hover:text-violet-glow transition-colors duration-300 flex flex-col items-center gap-2 text-xs font-mono">
+        <span>SCROLL</span>
+        <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+      </a>
+    </section>
+
+    <!-- C. SECTION A PROPOS — Le Manifeste Personnel -->
+    <section id="about" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="bg-void-card border border-void-border rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 relative overflow-hidden backdrop-blur-xl shadow-2xl shadow-black/80">
+        
+        <!-- Decorative Glow -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-violet-accent/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          <!-- Left Column Header -->
+          <div class="lg:col-span-5 about-reveal">
+            <span class="inline-block font-mono text-xs uppercase tracking-widest text-violet-glow bg-violet-accent/10 px-4 py-1.5 rounded-full border border-violet-accent/20 mb-4">
+              // A PROPOS DE MOI
+            </span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif italic text-white leading-tight mb-6">
+              L'ambition du Génie Électrique au service de la Tech.
+            </h2>
+            <p class="text-slate-400 font-sans text-sm leading-relaxed mb-6">
+              Créatif, rigoureux et orienté solutions, je construis des passerelles concrètes entre l'ingénierie matérielle, l'automatisation et le développement digital de pointe.
+            </p>
+            <div class="flex items-center gap-4 text-xs font-mono text-slate-300">
+              <div class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-violet-glow"></i>
+                <span>Ouagadougou, Burkina Faso</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vertical Separator (Desktop) -->
+          <div class="hidden lg:block lg:col-span-1 flex justify-center">
+            <div class="w-[2px] h-64 bg-gradient-to-b from-transparent via-violet-accent/50 to-transparent"></div>
+          </div>
+
+          <!-- Right Column Content -->
+          <div class="lg:col-span-6 about-reveal text-slate-300 font-sans text-base md:text-lg leading-relaxed space-y-5">
+            <p>
+              Mon parcours académique et entrepreneurial est guidé par une passion absolue pour l'innovation technologique et l'impact social direct. 
+            </p>
+            <p>
+              Après avoir décroché mon <strong class="text-white font-semibold">Baccalauréat E (Mathématiques & Technique)</strong> au Lycée Technique National en 2025, j'ai rejoint l'<strong class="text-white font-semibold">Institut Supérieur de Génie Électrique du Burkina Faso (ISGE-BF)</strong> pour approfondir la robotique, la commande industrielle et les systèmes embarqués.
+            </p>
+            <p>
+              Entrepreneur engagé, j'ai conçu en 2026 la plateforme e-santé <strong class="text-violet-glow font-semibold">Gosanté</strong> et cofondé <strong class="text-violet-glow font-semibold">Markan School</strong>, une initiative dédiée à l'initiation des jeunes à la robotique et aux technologies Arduino. Adepte fervent du <strong class="text-white font-semibold">Vibe Coding</strong>, je maîtrise l'accélération par IA pour concevoir des applications vivantes, fluides et professionnelles.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- D. SECTION EXPERIENCE — La Timeline Vivante -->
+    <section id="experience" class="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="font-mono text-xs uppercase tracking-widest text-violet-glow bg-violet-accent/10 px-4 py-1.5 rounded-full border border-violet-accent/20">
+          // TIMELINE & EXPÉRIENCES
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-4 text-white">
+          Parcours & Initiatives
+        </h2>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="relative">
+        
+        <!-- Central Line -->
+        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-violet-accent via-purple-600 to-transparent md:-translate-x-1/2"></div>
+
+        <!-- Experience Cards -->
+        <div class="space-y-12 relative">
+
+          <!-- Card 1 -->
+          <div class="timeline-item flex flex-col md:flex-row items-start md:items-center">
+            <div class="w-full md:w-1/2 pr-0 md:pr-12 md:text-right pl-12 md:pl-0 mb-4 md:mb-0">
+              <div class="bg-void-card border border-void-border rounded-[2rem] p-6 md:p-8 hover:scale-[1.01] hover:border-violet-glow/40 transition-all duration-300 shadow-xl group">
+                <span class="font-mono text-xs text-violet-glow font-semibold">2026 – PRÉSENT</span>
+                <h3 class="text-xl font-bold text-white mt-1 group-hover:text-violet-glow transition-colors">Co-fondateur & Formateur Robotique</h3>
+                <h4 class="text-sm font-semibold text-slate-400 mb-3">Markan School — Ouagadougou</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Co-création et animation de programmes de formation pratique en robotique et microcontrôleurs Arduino pour les jeunes. Transmission de la passion du prototypage technique et de l'ingénierie matérielle.
+                </p>
+              </div>
+            </div>
+            <!-- Pulse Dot -->
+            <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-void border-2 border-violet-glow flex items-center justify-center z-10 shadow-lg shadow-violet-accent/50">
+              <div class="w-2 h-2 rounded-full bg-violet-glow animate-ping"></div>
+            </div>
+            <div class="w-full md:w-1/2 pl-12 hidden md:block"></div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="timeline-item flex flex-col md:flex-row items-start md:items-center">
+            <div class="w-full md:w-1/2 pr-12 hidden md:block"></div>
+            <!-- Pulse Dot -->
+            <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-void border-2 border-violet-glow flex items-center justify-center z-10 shadow-lg shadow-violet-accent/50">
+              <div class="w-2 h-2 rounded-full bg-violet-accent"></div>
+            </div>
+            <div class="w-full md:w-1/2 pl-12 md:pl-12">
+              <div class="bg-void-card border border-void-border rounded-[2rem] p-6 md:p-8 hover:scale-[1.01] hover:border-violet-glow/40 transition-all duration-300 shadow-xl group">
+                <span class="font-mono text-xs text-violet-glow font-semibold">2026</span>
+                <h3 class="text-xl font-bold text-white mt-1 group-hover:text-violet-glow transition-colors">Fondateur & Concepteur Lead</h3>
+                <h4 class="text-sm font-semibold text-slate-400 mb-3">Gosanté (Projet E-Santé Innovation)</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Conception et développement de la plateforme e-santé Gosanté. Architecture fonctionnelle, modélisation de l'expérience utilisateur et digitalisation de l'accès aux soins médicaux au Burkina Faso.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="timeline-item flex flex-col md:flex-row items-start md:items-center">
+            <div class="w-full md:w-1/2 pr-0 md:pr-12 md:text-right pl-12 md:pl-0 mb-4 md:mb-0">
+              <div class="bg-void-card border border-void-border rounded-[2rem] p-6 md:p-8 hover:scale-[1.01] hover:border-violet-glow/40 transition-all duration-300 shadow-xl group">
+                <span class="font-mono text-xs text-violet-glow font-semibold">2024 – 2025</span>
+                <h3 class="text-xl font-bold text-white mt-1 group-hover:text-violet-glow transition-colors">Participant Lead — Hackathon INGENOVA</h3>
+                <h4 class="text-sm font-semibold text-slate-400 mb-3">ISGE-BF — Challenge d'Innovation</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Participation active au prestigieux Hackathon INGENOVA de l'ISGE-BF. Développement accéléré d'un prototype technologique combinant matériel électrique et logique logicielle.
+                </p>
+              </div>
+            </div>
+            <!-- Pulse Dot -->
+            <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-void border-2 border-violet-glow flex items-center justify-center z-10 shadow-lg shadow-violet-accent/50">
+              <div class="w-2 h-2 rounded-full bg-violet-accent"></div>
+            </div>
+            <div class="w-full md:w-1/2 pl-12 hidden md:block"></div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="timeline-item flex flex-col md:flex-row items-start md:items-center">
+            <div class="w-full md:w-1/2 pr-12 hidden md:block"></div>
+            <!-- Pulse Dot -->
+            <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-void border-2 border-violet-glow flex items-center justify-center z-10 shadow-lg shadow-violet-accent/50">
+              <div class="w-2 h-2 rounded-full bg-violet-accent"></div>
+            </div>
+            <div class="w-full md:w-1/2 pl-12 md:pl-12">
+              <div class="bg-void-card border border-void-border rounded-[2rem] p-6 md:p-8 hover:scale-[1.01] hover:border-violet-glow/40 transition-all duration-300 shadow-xl group">
+                <span class="font-mono text-xs text-violet-glow font-semibold">2024</span>
+                <h3 class="text-xl font-bold text-white mt-1 group-hover:text-violet-glow transition-colors">Stagiaire en Mécanique Générale</h3>
+                <h4 class="text-sm font-semibold text-slate-400 mb-3">Atelier Technique & Métiers Industriels</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Stage d'immersion pratique en mécanique industrielle : usinage, lecture de plans techniques, montage mécanique et maintenance des installations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- E. SECTION COMPETENCES — Le Tableau de Bord -->
+    <section id="skills" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="font-mono text-xs uppercase tracking-widest text-violet-glow bg-violet-accent/10 px-4 py-1.5 rounded-full border border-violet-accent/20">
+          // RADAR DE MAÎTRISE
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-4 text-white">
+          Tableau de Bord des Compétences
+        </h2>
+      </div>
+
+      <!-- Skills Cards Grid with SVG Gauges -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Skill 1: Vibe Coding -->
+        <div class="skill-card bg-void-card border border-void-border rounded-[2.5rem] p-8 flex flex-col items-center text-center hover:scale-[1.02] hover:border-violet-glow/50 transition-all duration-300 shadow-xl relative group">
+          <div class="relative w-36 h-36 mb-6 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="transparent" />
+              <circle class="circle-progress" cx="50" cy="50" r="40" stroke="#7B61FF" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" fill="transparent" data-target-percent="95" />
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="skill-percent font-mono text-3xl font-extrabold text-white">0%</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-glow transition-colors">Vibe Coding & Web IA</h3>
+          <p class="text-slate-400 text-xs leading-relaxed font-sans">
+            Développement accéléré par IA, création d'interfaces dynamiques Next-Gen, prototypes interactifs haute fidélité.
+          </p>
+        </div>
+
+        <!-- Skill 2: Génie Électrique & Arduino -->
+        <div class="skill-card bg-void-card border border-void-border rounded-[2.5rem] p-8 flex flex-col items-center text-center hover:scale-[1.02] hover:border-violet-glow/50 transition-all duration-300 shadow-xl relative group">
+          <div class="relative w-36 h-36 mb-6 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="transparent" />
+              <circle class="circle-progress" cx="50" cy="50" r="40" stroke="#A07CFE" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" fill="transparent" data-target-percent="90" />
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="skill-percent font-mono text-3xl font-extrabold text-white">0%</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-glow transition-colors">Robotique & Arduino</h3>
+          <p class="text-slate-400 text-xs leading-relaxed font-sans">
+            Programmation microcontrôleurs, schématique électronique, capteurs IoT & systèmes d'automatisation.
+          </p>
+        </div>
+
+        <!-- Skill 3: Entrepreneuriat & Leadership -->
+        <div class="skill-card bg-void-card border border-void-border rounded-[2.5rem] p-8 flex flex-col items-center text-center hover:scale-[1.02] hover:border-violet-glow/50 transition-all duration-300 shadow-xl relative group">
+          <div class="relative w-36 h-36 mb-6 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="transparent" />
+              <circle class="circle-progress" cx="50" cy="50" r="40" stroke="#38BDF8" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" fill="transparent" data-target-percent="88" />
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="skill-percent font-mono text-3xl font-extrabold text-white">0%</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-glow transition-colors">Entrepreneuriat & Leadership</h3>
+          <p class="text-slate-400 text-xs leading-relaxed font-sans">
+            Formation certifiée complète, direction de projets d'équipe, modélisation business et vision stratégique.
+          </p>
+        </div>
+
+        <!-- Skill 4: Affiches & Visuels IA -->
+        <div class="skill-card bg-void-card border border-void-border rounded-[2.5rem] p-8 flex flex-col items-center text-center hover:scale-[1.02] hover:border-violet-glow/50 transition-all duration-300 shadow-xl relative group">
+          <div class="relative w-36 h-36 mb-6 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="transparent" />
+              <circle class="circle-progress" cx="50" cy="50" r="40" stroke="#EC4899" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" fill="transparent" data-target-percent="85" />
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="skill-percent font-mono text-3xl font-extrabold text-white">0%</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-glow transition-colors">Création Visuelle IA</h3>
+          <p class="text-slate-400 text-xs leading-relaxed font-sans">
+            Conception d'affiches publicitaires, visuels marketing et assets graphiques génératifs assistés par IA.
+          </p>
+        </div>
+
+        <!-- Skill 5: Prise de Parole en Public -->
+        <div class="skill-card bg-void-card border border-void-border rounded-[2.5rem] p-8 flex flex-col items-center text-center hover:scale-[1.02] hover:border-violet-glow/50 transition-all duration-300 shadow-xl relative group md:col-span-2 lg:col-span-1">
+          <div class="relative w-36 h-36 mb-6 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="transparent" />
+              <circle class="circle-progress" cx="50" cy="50" r="40" stroke="#10B981" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" fill="transparent" data-target-percent="92" />
+            </svg>
+            <div class="absolute flex flex-col items-center justify-center">
+              <span class="skill-percent font-mono text-3xl font-extrabold text-white">0%</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-glow transition-colors">Prise de Parole en Public</h3>
+          <p class="text-slate-400 text-xs leading-relaxed font-sans">
+            Aisance oratoire, pitching de projets devant jury, animation de conférences et présentations d'impact.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- F. SECTION FORMATION — Les Fondations -->
+    <section id="education" class="py-24 px-6 md:px-12 max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="font-mono text-xs uppercase tracking-widest text-violet-glow bg-violet-accent/10 px-4 py-1.5 rounded-full border border-violet-accent/20">
+          // CURSUS ACADÉMIQUE
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-4 text-white">
+          Formation & Diplômes
+        </h2>
+      </div>
+
+      <div class="space-y-6">
+        
+        <!-- Edu 1 -->
+        <div class="edu-card bg-void-card border border-void-border rounded-[2rem] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-violet-glow/40 transition-all duration-300 shadow-xl">
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 rounded-2xl bg-violet-accent/15 border border-violet-accent/30 flex items-center justify-center text-violet-glow shrink-0">
+              <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="font-mono text-xs text-violet-glow">2025 – PRÉSENT</span>
+              <h3 class="text-xl font-bold text-white mt-0.5">Génie Électrique (Études Universitaires)</h3>
+              <p class="text-slate-400 text-sm font-medium">Institut Supérieur de Génie Électrique du Burkina Faso (ISGE-BF)</p>
+            </div>
+          </div>
+          <span class="font-mono text-xs bg-white/5 border border-white/10 px-4 py-2 rounded-full text-slate-300">En Cursus</span>
+        </div>
+
+        <!-- Edu 2 -->
+        <div class="edu-card bg-void-card border border-void-border rounded-[2rem] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-violet-glow/40 transition-all duration-300 shadow-xl">
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 rounded-2xl bg-violet-accent/15 border border-violet-accent/30 flex items-center justify-center text-violet-glow shrink-0">
+              <i data-lucide="award" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="font-mono text-xs text-violet-glow">BAC 2025</span>
+              <h3 class="text-xl font-bold text-white mt-0.5">Baccalauréat Série E (Mathématiques & Technique)</h3>
+              <p class="text-slate-400 text-sm font-medium">Lycée Technique National</p>
+            </div>
+          </div>
+          <span class="font-mono text-xs bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-4 py-2 rounded-full">Obtenu</span>
+        </div>
+
+        <!-- Edu 3 -->
+        <div class="edu-card bg-void-card border border-void-border rounded-[2rem] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-violet-glow/40 transition-all duration-300 shadow-xl">
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 rounded-2xl bg-violet-accent/15 border border-violet-accent/30 flex items-center justify-center text-violet-glow shrink-0">
+              <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="font-mono text-xs text-violet-glow">CERTIFICATION</span>
+              <h3 class="text-xl font-bold text-white mt-0.5">Formation Certifiée en Entrepreneuriat & Leadership</h3>
+              <p class="text-slate-400 text-sm font-medium">Programme d'Excellence & Vision Stratégique</p>
+            </div>
+          </div>
+          <span class="font-mono text-xs bg-purple-500/10 border border-purple-500/30 text-purple-300 px-4 py-2 rounded-full">Certifié</span>
+        </div>
+
+        <!-- Edu 4 -->
+        <div class="edu-card bg-void-card border border-void-border rounded-[2rem] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-violet-glow/40 transition-all duration-300 shadow-xl">
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 rounded-2xl bg-violet-accent/15 border border-violet-accent/30 flex items-center justify-center text-violet-glow shrink-0">
+              <i data-lucide="book-open" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="font-mono text-xs text-violet-glow">SECONDAIRE</span>
+              <h3 class="text-xl font-bold text-white mt-0.5">BEPC & Brevet d'Études Primaires (CEP)</h3>
+              <p class="text-slate-400 text-sm font-medium">Lycée Privé La Source</p>
+            </div>
+          </div>
+          <span class="font-mono text-xs bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-4 py-2 rounded-full">Obtenu</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- G. SECTION CONTACT — Le Pont -->
+    <section id="contact" class="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+      <div class="bg-gradient-to-br from-[#121226] via-[#1A1838] to-[#0A0A14] border border-violet-accent/30 rounded-[3rem] p-8 md:p-16 relative overflow-hidden backdrop-blur-xl shadow-2xl">
+        
+        <!-- Ambient Glow -->
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-violet-accent/25 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="text-center max-w-3xl mx-auto mb-12 relative z-10">
+          <span class="font-mono text-xs uppercase tracking-widest text-violet-glow bg-violet-accent/10 px-4 py-1.5 rounded-full border border-violet-accent/20">
+            // METTONS-NOUS EN RELATION
+          </span>
+          <h2 class="text-4xl sm:text-6xl font-serif italic text-white mt-4 mb-4">
+            Travaillons ensemble.
+          </h2>
+          <p class="text-slate-300 font-sans text-base sm:text-lg">
+            Vous avez un projet innovant, une proposition de collaboration ou souhaitez en savoir plus sur Gosanté et Markan School ? Discutons-en dès aujourd'hui.
+          </p>
+        </div>
+
+        <!-- Social & Contact Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 relative z-10">
+          
+          <a href="mailto:ouedraogo.ulrich@isge-bf.org" class="contact-card group bg-void/70 border border-white/10 rounded-[2rem] p-6 text-center hover:border-violet-glow transition-all duration-300">
+            <div class="w-12 h-12 rounded-full bg-violet-accent/20 flex items-center justify-center text-violet-glow mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-slate-400 block mb-1">EMAIL DIRECT</span>
+            <span class="font-semibold text-white text-sm group-hover:text-violet-glow transition-colors break-all">ouedraogo.ulrich@isge-bf.org</span>
+          </a>
+
+          <a href="tel:+22670000000" class="contact-card group bg-void/70 border border-white/10 rounded-[2rem] p-6 text-center hover:border-violet-glow transition-all duration-300">
+            <div class="w-12 h-12 rounded-full bg-violet-accent/20 flex items-center justify-center text-violet-glow mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="phone" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-slate-400 block mb-1">TÉLÉPHONE & WHATSAPP</span>
+            <span class="font-semibold text-white text-sm group-hover:text-violet-glow transition-colors">+226 70 00 00 00</span>
+          </a>
+
+          <div class="contact-card group bg-void/70 border border-white/10 rounded-[2rem] p-6 text-center hover:border-violet-glow transition-all duration-300">
+            <div class="w-12 h-12 rounded-full bg-violet-accent/20 flex items-center justify-center text-violet-glow mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="map-pin" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-slate-400 block mb-1">LOCALISATION</span>
+            <span class="font-semibold text-white text-sm">Ouagadougou, Burkina Faso</span>
+          </div>
+
+        </div>
+
+        <!-- Big CTA Button -->
+        <div class="text-center relative z-10">
+          <button id="download-cv-contact" class="magnetic-btn px-10 py-5 rounded-full bg-gradient-to-r from-violet-accent via-purple-600 to-violet-dark text-white font-semibold tracking-wide text-base shadow-2xl shadow-violet-accent/40 hover:shadow-violet-glow/60 transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center gap-3">
+            <i data-lucide="download-cloud" class="w-6 h-6"></i>
+            <span>Télécharger mon CV Complet (PDF)</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- H. PIED DE PAGE -->
+  <footer class="bg-[#06060C] border-t border-white/10 rounded-t-[3rem] md:rounded-t-[4rem] py-12 px-6 text-center relative z-20">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Info -->
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-violet-accent flex items-center justify-center text-white text-xs font-mono font-bold">UO</span>
+        <span class="text-sm font-semibold text-white tracking-wide">Ulrich OUEDRAOGO</span>
+      </div>
+
+      <!-- Center Vibe Coding note -->
+      <p class="text-xs font-mono text-slate-400">
+        Fait avec le <span class="text-violet-glow">vibe coding</span> • 2026
+      </p>
+
+      <!-- Right Status Badge -->
+      <div class="flex items-center gap-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>En ligne — Disponible pour projets</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- App JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
